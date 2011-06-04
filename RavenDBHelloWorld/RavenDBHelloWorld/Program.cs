@@ -10,8 +10,13 @@ namespace RavenDBHelloWorld
     {
         static void Main(string[] args)
         {
+            string firstName = "";
+            while (firstName != "Exit")
+          {
             Console.WriteLine("Please enter client's first Name:");
-            string firstName = Console.ReadLine().Trim();
+            Console.WriteLine("Or type 'EXIT' to end the program.");
+            firstName = Console.ReadLine().Trim();
+            if (firstName == "EXIT") return;
             Console.WriteLine("Please enter client's last Name:");
             string lastName = Console.ReadLine().Trim();
             Console.WriteLine("Please enter client's street address:");
@@ -57,13 +62,16 @@ namespace RavenDBHelloWorld
                     session.SaveChanges();
                 }
             }
+          }
         }
 
         public class Person
         {
             public string FirstName { get ; set ; }
             public string LastName { get; set ; }
+            public string Id { get; set; }
             public Address PersonAddress {get ; set ; }
+
         }
 
         public class Address
